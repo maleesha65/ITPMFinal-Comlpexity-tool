@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Analytics;
 
 import java.io.BufferedReader;
@@ -12,10 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-/**
- *
- * @author nuwan
- */
 public class MethodComplexity {
     
     ArrayList<String> returnValues = new ArrayList<>();
@@ -23,16 +14,15 @@ public class MethodComplexity {
     String[] AccessLvels = ctrl.getAccessLevels();
     String[] PrimitiveTypes = ctrl.getPrimitiveDataTypes();
     
-    /*
-    Cm = Complexity of a line which includes a method signature 
-    Wmrt = Weight due to method return type 
-    Wpdtp = Weight of primitive data type parameters 
-    Npdtp = Number of primitive data type parameters 
-    Wcdtp = Weight of composite data type parameters 
-    Ncdtp = Number of composite data type parameters
-    */
+
+//    Cm = Complexity of a line which includes a method signature 
+//    Wmrt = Weight due to method return type 
+//    Wpdtp = Weight of primitive data type parameters 
+//    Npdtp = Number of primitive data type parameters 
+//    Wcdtp = Weight of composite data type parameters 
+//    Ncdtp = Number of composite data type parameters
     
-    int Cm,Wmrt,Wpdtp,Npdtp,Wcdtp,Ncdtp;
+    int Cm = 0,Wmrt = 0,Wpdtp = 0,Npdtp = 0,Wcdtp = 0,Ncdtp = 0;
     
     public ArrayList<String> MethodComplexityInitializer(String filepath) throws FileNotFoundException, IOException
     {
@@ -44,9 +34,9 @@ public class MethodComplexity {
                 {
                     
                     CurrentLine=line;
-//                    
+                  
                     findToken(CurrentLine,1);
-//                    
+
                 }
         returnValues.add(Integer.toString(Wmrt));
         returnValues.add(Integer.toString(Wpdtp));

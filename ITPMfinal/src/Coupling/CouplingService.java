@@ -1,7 +1,7 @@
 package Coupling;
 import java.util.ArrayList;
 
-import Coupling.CustomFile;
+import FileRead.CustomFile;
 import Coupling.Line;
 
 public interface CouplingService {

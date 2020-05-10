@@ -1,5 +1,7 @@
 package Coupling;
 
+import FileRead.CustomFile;
+
 public class Line {
 	
 	private CustomFile file;

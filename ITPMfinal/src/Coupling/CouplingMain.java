@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Coupling;
 
+import FileRead.FileReadService;
+import FileRead.FileReadServiceImp;
+import FileRead.FileRead;
+import FileRead.CustomFile;
 import java.util.ArrayList;
 
-/**
- *
- * @author nuwan
- */
 public class CouplingMain {
     
     private ArrayList<CustomFile> fileList = new ArrayList<CustomFile>();

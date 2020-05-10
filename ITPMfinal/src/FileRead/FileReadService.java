@@ -1,7 +1,7 @@
-package Coupling;
+package FileRead;
 
-import Coupling.CustomFile;
-import Coupling.FileRead;
+import FileRead.CustomFile;
+import FileRead.FileRead;
 
 public interface FileReadService {
 	
