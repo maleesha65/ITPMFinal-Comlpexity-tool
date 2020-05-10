@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Coupling.Coupling;
-import Coupling.CustomFile;
-import Coupling.FileRead;
+import FileRead.CustomFile;
 import Coupling.Line;
 
 import sun.nio.ch.FileKey;

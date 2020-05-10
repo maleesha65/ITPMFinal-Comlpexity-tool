@@ -1,11 +1,11 @@
-package Coupling;
+package FileRead;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Coupling.CustomFile;
-import Coupling.FileRead;
+import FileRead.CustomFile;
+import FileRead.FileRead;
 import Coupling.Line;
 
 public class FileReadServiceImp implements FileReadService{

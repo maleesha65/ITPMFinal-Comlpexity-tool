@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Analytics;
 
 import java.io.BufferedReader;
@@ -13,26 +8,21 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- *
- * @author nuwan
- */
-
 public class SizeComplexityMeasuring {
     
     Controller ctl = new Controller();
     
-    /*CS= Complexity of a program statement due to its size
-    Wkw = Weight due to keywords or reserved words (class, public, void, true, else, default, return, null, break, this, etc.)
-    Nkw = Number of keywords or reserved words in the program statement
-    Wid = Weight due to identifiers (names of classes, methods, objects, variables, arguments, and data structures)
-    Nid = Number of identifiers in the program statement
-    Wop = Weight due to operators
-    Nop = Number of operators in the program statement
-    Wnv = Weight due to numerical values or numbers
-    Nnv = Number of numerical values in the program statement
-    Wsl = Weight due to string literals (“ ” ,“Hi”, “Hello World”, “The factorial value of the entered number is”)
-    Nsl = Number of string literals in the program statement  */
+//    CS= Complexity of a program statement due to its size
+//    Wkw = Weight due to keywords or reserved words (class, public, void, true, else, default, return, null, break, this, etc.)
+//    Nkw = Number of keywords or reserved words in the program statement
+//    Wid = Weight due to identifiers (names of classes, methods, objects, variables, arguments, and data structures)
+//    Nid = Number of identifiers in the program statement
+//    Wop = Weight due to operators
+//    Nop = Number of operators in the program statement
+//    Wnv = Weight due to numerical values or numbers
+//    Nnv = Number of numerical values in the program statement
+//    Wsl = Weight due to string literals (“ ” ,“Hi”, “Hello World”, “The factorial value of the entered number is”)
+//    Nsl = Number of string literals in the program statement  */
     
     int Cs,Wkw,Nkw,Wid,Nid,Wop,Nop,Wnv,Nnv,Wsl,Nsl;
     boolean flag = false;
@@ -52,9 +42,9 @@ public class SizeComplexityMeasuring {
                 {
                     
                     CurrentLine=line;
-//                    
+              
                     findToken(CurrentLine,1);
-//                    
+
                 }
                 
                 returnValues.add(Integer.toString(Wkw));

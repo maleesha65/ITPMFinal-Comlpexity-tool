@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Interfaces;
 
 import Analytics.Controller;
 import Analytics.FileAnalyzer;
 import Coupling.Coupling;
 import Coupling.CouplingMain;
-import Coupling.CustomFile;
+import FileRead.CustomFile;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,10 +18,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import static jdk.nashorn.internal.parser.TokenType.EOF;
 
-/**
- *
- * @author nuwan
- */
+
 public class Main extends javax.swing.JFrame {
 
     public static String filepath;

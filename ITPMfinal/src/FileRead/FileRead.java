@@ -1,4 +1,4 @@
-package Coupling;
+package FileRead;
 import java.util.Scanner;
 
 import java.io.*;
