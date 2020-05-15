@@ -8,8 +8,6 @@ import Coupling.Coupling;
 import FileRead.CustomFile;
 import Coupling.Line;
 
-import sun.nio.ch.FileKey;
-
 public class CouplingServiceImp implements CouplingService {
 
 	@Override
