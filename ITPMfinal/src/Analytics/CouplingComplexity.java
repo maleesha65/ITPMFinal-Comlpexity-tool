@@ -5,6 +5,8 @@
  */
 package Analytics;
 
+import Coupling.CouplingServiceImp;
+import FileRead.CustomFile;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -45,15 +47,72 @@ Nrmrgvd = Number of references from recursive method(s) to global variable in di
     
     int Wr,Nr,Wmcms,Nmcms,Wmcmd,Nmcmd,Wmcrms,Nmcrms,Wmcrmd,Nmcrmd,Wrmcrms,Nrmcrms,Wrmcrmd,Nrmcrmd,Wrmcms,Nrmcms,Wrmcmd,Nrmcmd,Wmrgvs,Nmrgvs,Wmrgvd,Nmrgvd,Wrmrgvs,Nrmrgvs,Wrmrgvd,Nrmrgvd;
     ArrayList<String> couplingResults = new ArrayList<>();
+    CouplingServiceImp couplingImp = new CouplingServiceImp();
+    
     
     public ArrayList<String> CouplingComplexityInitializer(String filepath) throws Exception
     {
         
+        CustomFile custFile = new CustomFile(filepath);
+        ArrayList<CustomFile> fileList = new ArrayList<>();
         FileReader read = new FileReader(filepath);
         BufferedReader br = new BufferedReader(read);
         
-        
-        
+        Wr = 2;
+        Wmcms = 2;
+        Wmcmd = 3;
+        Wmcrms = 3;
+        Wmcrmd = 4;
+        Wrmcrms = 4;
+        Wrmcrmd = 5;
+        Wrmcms = 3;
+        Wrmcmd = 4;
+        Wmrgvs = 1;
+        Wmrgvd = 2;
+        Wrmrgvs = 1;
+        Wrmrgvd = 2;
+ /*               
+      Nr = couplingImp.getRecursiveMethods(custFile);       
+      Nmcms = couplingImp.getRegInReg(custFile);
+      Nmcmd = couplingImp.getRegInReg_DF(fileList);
+      Nmcrms = couplingImp.getRegInRec(custFile);
+      Nmcrmd= couplingImp.getRegInRec_DF(fileList);
+      Nrmcrms = couplingImp.getRecInRec(custFile);
+      Nrmcrmd = couplingImp.getRecInRec_DF(fileList);
+      Nrmcms = couplingImp.getRecInReg(custFile);
+      Nrmcmd = couplingImp.getRecInReg_DF(fileList);
+      Nmrgvs = couplingImp.getGlobalVariableListInReg(custFile);
+      Nmrgvd = couplingImp.getGlobalVariableListInReg_DF(fileList);
+      Nrmrgvs = couplingImp.getGlobalVariableListInRec(custFile);
+      Nrmrgvd = couplingImp.getGlobalVariableListInRec_DF(fileList);
+*/
+        couplingResults.add(Integer.toString(Wr));
+        couplingResults.add(Integer.toString(Nr));
+        couplingResults.add(Integer.toString(Wmcms));
+        couplingResults.add(Integer.toString(Nmcms));
+        couplingResults.add(Integer.toString(Wmcmd));
+        couplingResults.add(Integer.toString(Nmcmd));
+        couplingResults.add(Integer.toString(Wmcrms));
+        couplingResults.add(Integer.toString(Nmcrms));
+        couplingResults.add(Integer.toString(Wmcrmd));
+        couplingResults.add(Integer.toString(Nmcrmd));
+        couplingResults.add(Integer.toString(Wrmcrms));
+        couplingResults.add(Integer.toString(Nrmcrms));
+        couplingResults.add(Integer.toString(Wrmcrmd));
+        couplingResults.add(Integer.toString(Nrmcrmd));
+        couplingResults.add(Integer.toString(Wrmcms));
+        couplingResults.add(Integer.toString(Nrmcms));
+        couplingResults.add(Integer.toString(Wrmcmd));
+        couplingResults.add(Integer.toString(Nrmcmd));
+        couplingResults.add(Integer.toString(Wmrgvs));
+        couplingResults.add(Integer.toString(Nmrgvs));
+        couplingResults.add(Integer.toString(Wmrgvd));
+        couplingResults.add(Integer.toString(Nmrgvd));
+        couplingResults.add(Integer.toString(Wrmrgvs));
+        couplingResults.add(Integer.toString(Nrmrgvs));
+        couplingResults.add(Integer.toString(Wrmrgvd));
+        couplingResults.add(Integer.toString(Nrmrgvd));
+                
         return couplingResults;
     }
 }
