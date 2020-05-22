@@ -6,6 +6,7 @@
 package Interfaces;
 
 import Analytics.ControlComplexity;
+import Analytics.CouplingComplexity;
 import Analytics.MethodComplexity;
 import Analytics.SizeComplexityMeasuring;
 import Analytics.VariableComplexity;
@@ -15,10 +16,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- *
- * @author nuwan
- */
+
 public class ResultPage extends javax.swing.JFrame {
 
     /**
@@ -28,16 +26,19 @@ public class ResultPage extends javax.swing.JFrame {
     MethodComplexity mcm = new MethodComplexity();
     VariableComplexity vcm = new VariableComplexity();
     ControlComplexity Ccm = new ControlComplexity();
+    CouplingComplexity ccp = new CouplingComplexity();
     
     ArrayList<String> SizeComplexityList = new ArrayList<>();
     ArrayList<String> MethodComplexityList = new ArrayList<>();
     ArrayList<String> VariableComplexityList = new ArrayList<>();
     ArrayList<String> ControlComplexityLst = new ArrayList<>();
+    ArrayList<String> couplingComplexityList = new ArrayList<>();
     
     int Cs,Wkw,Nkw,Wid,Nid,Wop,Nop,Wnv,Nnv,Wsl,Nsl;
     int Cm,Wmrt,Wpdtp,Npdtp,Wcdtp,Ncdtp;
     int Cv,Wvs,Wpdtv,Npdtv,Wcdtv,Ncdtv;
     int Ccs,Wtcs,NC,Ccspps;
+    int Ccp,Wr,Nr,Wmcms,Nmcms,Wmcmd,Nmcmd,Wmcrms,Nmcrms,Wmcrmd,Nmcrmd,Wrmcrms,Nrmcrms,Wrmcrmd,Nrmcrmd,Wrmcms,Nrmcms,Wrmcmd,Nrmcmd,Wmrgvs,Nmrgvs,Wmrgvd,Nmrgvd,Wrmrgvs,Nrmrgvs,Wrmrgvd,Nrmrgvd;
     
     public ResultPage() {
         initComponents();
@@ -125,12 +126,76 @@ public class ResultPage extends javax.swing.JFrame {
         
     }
     
-    public void getCouplingComplexity(String filepath) throws FileNotFoundException, IOException
+    public void getCouplingComplexity(String filepath) throws FileNotFoundException, IOException, Exception
     {
+        couplingComplexityList = ccp.CouplingComplexityInitializer(filepath);
+        
         FileReader read = new FileReader(filepath);
         BufferedReader br = new BufferedReader(read);
         CcpVariableView.read(br, null);
-        CcpVariableView.requestFocus();   
+        CcpVariableView.requestFocus();
+        
+        Wr = Integer.parseInt(couplingComplexityList.get(0));
+        Nr = Integer.parseInt(couplingComplexityList.get(1));
+        Wmcms = Integer.parseInt(couplingComplexityList.get(2));
+        Nmcms = Integer.parseInt(couplingComplexityList.get(3));
+        Wmcmd = Integer.parseInt(couplingComplexityList.get(4));
+        Nmcmd = Integer.parseInt(couplingComplexityList.get(5));
+        Wmcrms = Integer.parseInt(couplingComplexityList.get(6));
+        Nmcrms = Integer.parseInt(couplingComplexityList.get(7));
+        Wmcrmd = Integer.parseInt(couplingComplexityList.get(8));
+        Nmcrmd = Integer.parseInt(couplingComplexityList.get(9));
+        Wrmcrms = Integer.parseInt(couplingComplexityList.get(10));
+        Nrmcrms = Integer.parseInt(couplingComplexityList.get(11));
+        Wrmcrmd = Integer.parseInt(couplingComplexityList.get(12));
+        Nrmcrmd = Integer.parseInt(couplingComplexityList.get(13));
+        Wrmcms = Integer.parseInt(couplingComplexityList.get(14));
+        Nrmcms = Integer.parseInt(couplingComplexityList.get(15));
+        Wrmcmd = Integer.parseInt(couplingComplexityList.get(16));
+        Nrmcmd = Integer.parseInt(couplingComplexityList.get(17));
+        Wmrgvs = Integer.parseInt(couplingComplexityList.get(18));
+        Nmrgvs = Integer.parseInt(couplingComplexityList.get(19));
+        Wmrgvd = Integer.parseInt(couplingComplexityList.get(20));
+        Nmrgvd = Integer.parseInt(couplingComplexityList.get(21));
+        Wrmrgvs = Integer.parseInt(couplingComplexityList.get(22));
+        Nrmrgvs = Integer.parseInt(couplingComplexityList.get(23));
+        Wrmrgvd = Integer.parseInt(couplingComplexityList.get(24));
+        Nrmrgvd = Integer.parseInt(couplingComplexityList.get(25));
+        
+        WrLabel.setText(Integer.toString(Wr));
+        NrLabel.setText(Integer.toString(Nr));
+        WmcmsLabel.setText(Integer.toString(Wmcms));
+        NmcmsLabel.setText(Integer.toString(Nmcms));
+        WmcmdLabel.setText(Integer.toString(Wmcmd));
+        NmcmdLabel.setText(Integer.toString(Nmcmd));
+        WmcrmsLabel.setText(Integer.toString(Wmcrms));
+        NmcrmsLabel.setText(Integer.toString(Nmcrms));
+        WmcrmdLabel.setText(Integer.toString(Wmcrmd));
+        NmcrmdLabel.setText(Integer.toString(Nmcrmd));
+        WrmcrmsLabel.setText(Integer.toString(Wrmcrms));
+        NrmcrmsLabel.setText(Integer.toString(Nrmcrms));
+        WrmcrmdLabel.setText(Integer.toString(Wrmcrmd));
+        NrmcrmdLabel.setText(Integer.toString(Nrmcrmd));
+        WrmcmsLabel.setText(Integer.toString(Wrmcms));
+        NrmcmsLabel.setText(Integer.toString(Nrmcms));
+        WrmcmdLabel.setText(Integer.toString(Wrmcmd));
+        NrmcmdLabel.setText(Integer.toString(Nrmcmd));
+        WmrgvsLabel.setText(Integer.toString(Wmrgvs));
+        NmrgvsLabel.setText(Integer.toString(Nmrgvs));
+        WmrgvdLabel.setText(Integer.toString(Wmrgvd));
+        NmrgvdLabel.setText(Integer.toString(Nmrgvd));
+        WrmrgvsLabel.setText(Integer.toString(Wrmrgvs));
+        NrmrgvsLabel.setText(Integer.toString(Nrmrgvs));
+        WrmrgvdLabel.setText(Integer.toString(Wrmrgvd));
+        NrmrgvdLabel.setText(Integer.toString(Nrmrgvd));
+        
+        Ccp = (Wr * Nr) + (Wmcms * Nmcms) + (Wmcmd * Nmcmd) + (Wmcrms * Nmcrms) + (Wmcrmd * Nmcrmd) + (Wrmcrms * Nrmcrms) + (Wrmcrmd *Nrmcrmd) + (Wrmcms * Nrmcms) + (Wrmcmd * Nrmcmd) + (Wmrgvs *Nmrgvs) + (Wmrgvd * Nmrgvd) + (Wrmrgvs * Nrmrgvs) + (Wrmrgvd * Nrmrgvd);
+        CcpLabel.setText(Integer.toString(Ccp));
+    }
+    
+    public void getCouplingAnalyzer(int value)
+    {
+        CouplingAnalyzer.setText(Integer.toString(value));
     }
     
     public void getVariableComplexity(String [] str, String filepath) throws FileNotFoundException, IOException
@@ -274,23 +339,23 @@ public class ResultPage extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
+        NrLabel = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
+        WmcmsLabel = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
+        NmcmsLabel = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
+        WmcmdLabel = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
+        NmcmdLabel = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
+        WmcrmsLabel = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
+        NmcrmsLabel = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
+        WmcrmdLabel = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
-        jLabel55 = new javax.swing.JLabel();
+        WrLabel = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
@@ -300,15 +365,15 @@ public class ResultPage extends javax.swing.JFrame {
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
-        jLabel65 = new javax.swing.JLabel();
-        jLabel66 = new javax.swing.JLabel();
-        jLabel67 = new javax.swing.JLabel();
-        jLabel68 = new javax.swing.JLabel();
-        jLabel69 = new javax.swing.JLabel();
-        jLabel70 = new javax.swing.JLabel();
-        jLabel71 = new javax.swing.JLabel();
-        jLabel72 = new javax.swing.JLabel();
-        jLabel73 = new javax.swing.JLabel();
+        NmcrmdLabel = new javax.swing.JLabel();
+        WrmcrmsLabel = new javax.swing.JLabel();
+        NrmcrmsLabel = new javax.swing.JLabel();
+        WrmcrmdLabel = new javax.swing.JLabel();
+        NrmcrmdLabel = new javax.swing.JLabel();
+        WrmcmsLabel = new javax.swing.JLabel();
+        NrmcmsLabel = new javax.swing.JLabel();
+        WrmcmdLabel = new javax.swing.JLabel();
+        NrmcmdLabel = new javax.swing.JLabel();
         jLabel74 = new javax.swing.JLabel();
         jLabel75 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
@@ -318,15 +383,17 @@ public class ResultPage extends javax.swing.JFrame {
         jLabel80 = new javax.swing.JLabel();
         jLabel81 = new javax.swing.JLabel();
         jLabel82 = new javax.swing.JLabel();
-        jLabel83 = new javax.swing.JLabel();
-        jLabel84 = new javax.swing.JLabel();
-        jLabel85 = new javax.swing.JLabel();
-        jLabel86 = new javax.swing.JLabel();
-        jLabel87 = new javax.swing.JLabel();
-        jLabel88 = new javax.swing.JLabel();
-        jLabel89 = new javax.swing.JLabel();
-        jLabel90 = new javax.swing.JLabel();
-        jLabel91 = new javax.swing.JLabel();
+        WmrgvsLabel = new javax.swing.JLabel();
+        NmrgvsLabel = new javax.swing.JLabel();
+        WmrgvdLabel = new javax.swing.JLabel();
+        NmrgvdLabel = new javax.swing.JLabel();
+        WrmrgvsLabel = new javax.swing.JLabel();
+        NrmrgvsLabel = new javax.swing.JLabel();
+        WrmrgvdLabel = new javax.swing.JLabel();
+        NrmrgvdLabel = new javax.swing.JLabel();
+        CcpLabel = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        CouplingAnalyzer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -335,7 +402,7 @@ public class ResultPage extends javax.swing.JFrame {
         jLabel1.setText("Analyzer Form");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel2.setText("Number of Inheritance :");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, -1));
 
@@ -343,7 +410,7 @@ public class ResultPage extends javax.swing.JFrame {
         ComplexityLabel.setText("--");
         getContentPane().add(ComplexityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel3.setText("Size Complexity :");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, -1, -1));
 
@@ -351,7 +418,7 @@ public class ResultPage extends javax.swing.JFrame {
         KeyWordAnalyzerLabel.setText("--");
         getContentPane().add(KeyWordAnalyzerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 190, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel4.setText("Code Complexity :");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
 
@@ -359,7 +426,7 @@ public class ResultPage extends javax.swing.JFrame {
         InheritanceLabel.setText("--");
         getContentPane().add(InheritanceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel5.setText("Key-Word Usage :");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, -1, -1));
 
@@ -607,56 +674,56 @@ public class ResultPage extends javax.swing.JFrame {
         jLabel38.setText("Nr");
         jPanel5.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
 
-        jLabel39.setText("--");
-        jPanel5.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
+        NrLabel.setText("--");
+        jPanel5.add(NrLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
 
         jLabel40.setText("Wmcms");
         jPanel5.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
 
-        jLabel41.setText("--");
-        jPanel5.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, -1, -1));
+        WmcmsLabel.setText("--");
+        jPanel5.add(WmcmsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, -1, -1));
 
         jLabel42.setText("Nmcms");
         jPanel5.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
 
-        jLabel43.setText("--");
-        jPanel5.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, -1));
+        NmcmsLabel.setText("--");
+        jPanel5.add(NmcmsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, -1));
 
         jLabel44.setText("Wmcmd");
         jPanel5.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, -1, -1));
 
-        jLabel45.setText("--");
-        jPanel5.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
+        WmcmdLabel.setText("--");
+        jPanel5.add(WmcmdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
 
         jLabel46.setText("Nmcmd");
         jPanel5.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, -1, -1));
 
-        jLabel47.setText("--");
-        jPanel5.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, -1));
+        NmcmdLabel.setText("--");
+        jPanel5.add(NmcmdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, -1, -1));
 
         jLabel48.setText("Wmcrms");
         jPanel5.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, -1));
 
-        jLabel49.setText("--");
-        jPanel5.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, -1, -1));
+        WmcrmsLabel.setText("--");
+        jPanel5.add(WmcrmsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, -1, -1));
 
         jLabel50.setText("Nmcrms");
         jPanel5.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, -1));
 
-        jLabel51.setText("--");
-        jPanel5.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, -1, -1));
+        NmcrmsLabel.setText("--");
+        jPanel5.add(NmcrmsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, -1, -1));
 
         jLabel52.setText("Wmcrmd");
         jPanel5.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 310, -1, -1));
 
-        jLabel53.setText("--");
-        jPanel5.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
+        WmcrmdLabel.setText("--");
+        jPanel5.add(WmcrmdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 20, -1));
 
         jLabel54.setText("Wr");
         jPanel5.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
 
-        jLabel55.setText("--");
-        jPanel5.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
+        WrLabel.setText("--");
+        jPanel5.add(WrLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
 
         jLabel56.setText("Nmcrmd");
         jPanel5.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
@@ -685,32 +752,32 @@ public class ResultPage extends javax.swing.JFrame {
         jLabel64.setText("Nrmcmd");
         jPanel5.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, -1, -1));
 
-        jLabel65.setText("--");
-        jPanel5.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 70, -1, -1));
+        NmcrmdLabel.setText("--");
+        jPanel5.add(NmcrmdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 70, -1, -1));
 
-        jLabel66.setText("--");
-        jPanel5.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, -1, -1));
+        WrmcrmsLabel.setText("--");
+        jPanel5.add(WrmcrmsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, -1, -1));
 
-        jLabel67.setText("--");
-        jPanel5.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, -1, -1));
+        NrmcrmsLabel.setText("--");
+        jPanel5.add(NrmcrmsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, -1, -1));
 
-        jLabel68.setText("--");
-        jPanel5.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, -1, -1));
+        WrmcrmdLabel.setText("--");
+        jPanel5.add(WrmcrmdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, -1, -1));
 
-        jLabel69.setText("--");
-        jPanel5.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, -1, -1));
+        NrmcrmdLabel.setText("--");
+        jPanel5.add(NrmcrmdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, -1, -1));
 
-        jLabel70.setText("--");
-        jPanel5.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, -1, -1));
+        WrmcmsLabel.setText("--");
+        jPanel5.add(WrmcmsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 220, -1, -1));
 
-        jLabel71.setText("--");
-        jPanel5.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, -1, -1));
+        NrmcmsLabel.setText("--");
+        jPanel5.add(NrmcmsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 250, -1, -1));
 
-        jLabel72.setText("--");
-        jPanel5.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, -1, -1));
+        WrmcmdLabel.setText("--");
+        jPanel5.add(WrmcmdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 280, -1, -1));
 
-        jLabel73.setText("--");
-        jPanel5.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, -1, -1));
+        NrmcmdLabel.setText("--");
+        jPanel5.add(NrmcmdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 310, -1, -1));
 
         jLabel74.setText("Wmrgvs");
         jPanel5.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, -1, -1));
@@ -740,37 +807,45 @@ public class ResultPage extends javax.swing.JFrame {
         jLabel82.setText("Ccp");
         jPanel5.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 80, -1, -1));
 
-        jLabel83.setText("--");
-        jPanel5.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 70, -1, -1));
+        WmrgvsLabel.setText("--");
+        jPanel5.add(WmrgvsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 70, -1, -1));
 
-        jLabel84.setText("--");
-        jPanel5.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, -1, -1));
+        NmrgvsLabel.setText("--");
+        jPanel5.add(NmrgvsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, -1, -1));
 
-        jLabel85.setText("--");
-        jPanel5.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, -1, -1));
+        WmrgvdLabel.setText("--");
+        jPanel5.add(WmrgvdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, -1, -1));
 
-        jLabel86.setText("--");
-        jPanel5.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, -1, -1));
+        NmrgvdLabel.setText("--");
+        jPanel5.add(NmrgvdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, -1, -1));
 
-        jLabel87.setText("--");
-        jPanel5.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 190, -1, -1));
+        WrmrgvsLabel.setText("--");
+        jPanel5.add(WrmrgvsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 190, -1, -1));
 
-        jLabel88.setText("--");
-        jPanel5.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 220, -1, -1));
+        NrmrgvsLabel.setText("--");
+        jPanel5.add(NrmrgvsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 220, -1, -1));
 
-        jLabel89.setText("--");
-        jPanel5.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, -1, -1));
+        WrmrgvdLabel.setText("--");
+        jPanel5.add(WrmrgvdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, -1, -1));
 
-        jLabel90.setText("--");
-        jPanel5.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, -1, -1));
+        NrmrgvdLabel.setText("--");
+        jPanel5.add(NrmrgvdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, -1, -1));
 
-        jLabel91.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel91.setText("--");
-        jPanel5.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 80, 60, -1));
+        CcpLabel.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        CcpLabel.setText("--");
+        jPanel5.add(CcpLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 80, 60, -1));
 
         jTabbedPane1.addTab("Coupling", jPanel5);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 1300, 370));
+
+        jLabel39.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel39.setText("Coupling Complexity");
+        getContentPane().add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 190, -1, -1));
+
+        CouplingAnalyzer.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        CouplingAnalyzer.setText("--");
+        getContentPane().add(CouplingAnalyzer, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 190, -1, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -813,11 +888,13 @@ public class ResultPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea CcSVariableView;
+    private javax.swing.JLabel CcpLabel;
     private javax.swing.JTextArea CcpVariableView;
     private javax.swing.JLabel CcsLabel;
     private javax.swing.JLabel CcsppsLabel;
     private javax.swing.JLabel CmLabel;
     private javax.swing.JLabel ComplexityLabel;
+    private javax.swing.JLabel CouplingAnalyzer;
     private javax.swing.JLabel CsLabel1;
     private javax.swing.JLabel CsLabelValue;
     private javax.swing.JTextArea CsMethodsTextView;
@@ -830,21 +907,47 @@ public class ResultPage extends javax.swing.JFrame {
     private javax.swing.JLabel NcdtvLabel;
     private javax.swing.JLabel NidLabel;
     private javax.swing.JLabel NkwLabel;
+    private javax.swing.JLabel NmcmdLabel;
+    private javax.swing.JLabel NmcmsLabel;
+    private javax.swing.JLabel NmcrmdLabel;
+    private javax.swing.JLabel NmcrmsLabel;
+    private javax.swing.JLabel NmrgvdLabel;
+    private javax.swing.JLabel NmrgvsLabel;
     private javax.swing.JLabel NnvLabel;
     private javax.swing.JLabel NopLabel;
     private javax.swing.JLabel NpdtpLabel;
     private javax.swing.JLabel NpdtvLabel;
+    private javax.swing.JLabel NrLabel;
+    private javax.swing.JLabel NrmcmdLabel;
+    private javax.swing.JLabel NrmcmsLabel;
+    private javax.swing.JLabel NrmcrmdLabel;
+    private javax.swing.JLabel NrmcrmsLabel;
+    private javax.swing.JLabel NrmrgvdLabel;
+    private javax.swing.JLabel NrmrgvsLabel;
     private javax.swing.JLabel NslLabel;
     private javax.swing.JLabel SizeLabel;
     private javax.swing.JLabel WcdtpLabel;
     private javax.swing.JLabel WcdtvLabel;
     private javax.swing.JLabel WidLabel;
     private javax.swing.JLabel WkwLabel;
+    private javax.swing.JLabel WmcmdLabel;
+    private javax.swing.JLabel WmcmsLabel;
+    private javax.swing.JLabel WmcrmdLabel;
+    private javax.swing.JLabel WmcrmsLabel;
+    private javax.swing.JLabel WmrgvdLabel;
+    private javax.swing.JLabel WmrgvsLabel;
     private javax.swing.JLabel WmrtLabel;
     private javax.swing.JLabel WnvLabel;
     private javax.swing.JLabel WopLabel;
     private javax.swing.JLabel WpdtpLabel;
     private javax.swing.JLabel WpdtvLabel;
+    private javax.swing.JLabel WrLabel;
+    private javax.swing.JLabel WrmcmdLabel;
+    private javax.swing.JLabel WrmcmsLabel;
+    private javax.swing.JLabel WrmcrmdLabel;
+    private javax.swing.JLabel WrmcrmsLabel;
+    private javax.swing.JLabel WrmrgvdLabel;
+    private javax.swing.JLabel WrmrgvsLabel;
     private javax.swing.JLabel WslLabel;
     private javax.swing.JLabel WtcsLabel;
     private javax.swing.JLabel WvsLabel;
@@ -883,22 +986,14 @@ public class ResultPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
@@ -909,16 +1004,7 @@ public class ResultPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel71;
-    private javax.swing.JLabel jLabel72;
-    private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
@@ -929,16 +1015,7 @@ public class ResultPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel80;
     private javax.swing.JLabel jLabel81;
     private javax.swing.JLabel jLabel82;
-    private javax.swing.JLabel jLabel83;
-    private javax.swing.JLabel jLabel84;
-    private javax.swing.JLabel jLabel85;
-    private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel90;
-    private javax.swing.JLabel jLabel91;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

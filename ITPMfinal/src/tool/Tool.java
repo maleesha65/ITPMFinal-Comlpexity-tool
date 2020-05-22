@@ -7,10 +7,7 @@ package tool;
 
 import Interfaces.Main;
 
-/**
- *
- * @author nuwan
- */
+
 public class Tool {
 
     /**

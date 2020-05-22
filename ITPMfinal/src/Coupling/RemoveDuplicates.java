@@ -8,10 +8,7 @@ package Coupling;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
-/**
- *
- * @author nuwan
- */
+
 public class RemoveDuplicates {
     
     public ArrayList<Line> initiate(ArrayList<Line> lineSet) {

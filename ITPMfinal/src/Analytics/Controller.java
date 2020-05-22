@@ -246,4 +246,11 @@ public class Controller {
         
         
     }
+    
+    public int CouplingAnalyzer(String [] str)
+    {
+        int couplingResult = 0;
+        
+        return couplingResult;
+    }
 }

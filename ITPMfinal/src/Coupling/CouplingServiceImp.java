@@ -1,10 +1,7 @@
 package Coupling;
 
-import java.nio.channels.FileLock;
-import java.util.ArrayList;
-import java.util.List;
 
-import Coupling.Coupling;
+import java.util.ArrayList;
 import FileRead.CustomFile;
 import Coupling.Line;
 
@@ -184,7 +181,7 @@ public class CouplingServiceImp implements CouplingService {
 
 	}
 
-	// Senario 1
+
 	@Override
 	public void getRecursiveMethods(CustomFile file) {
 
@@ -268,7 +265,7 @@ public class CouplingServiceImp implements CouplingService {
 
 	}
 
-	// Senario 2
+
 	@Override
 	public void getRegInReg(CustomFile file) {
 
@@ -311,7 +308,7 @@ public class CouplingServiceImp implements CouplingService {
 
 	}
 
-	// Senario 4
+
 	@Override
 	public void getRecInReg(CustomFile file) {
 
@@ -357,7 +354,7 @@ public class CouplingServiceImp implements CouplingService {
 		file.getCoupling().setRecursiveInRegularMethods(recInReg);
 	}
 
-	// Senario 6
+
 	@Override
 	public void getRecInRec(CustomFile file) {
 
@@ -434,7 +431,7 @@ public class CouplingServiceImp implements CouplingService {
 		file.getCoupling().setRecursiveInRecursiveMethods(recInRec);
 	}
 
-	// Senario 8
+
 	@Override
 	public void getRegInRec(CustomFile file) {
 
@@ -543,7 +540,7 @@ public class CouplingServiceImp implements CouplingService {
 
 	}
 
-	// Senario 10
+
 	@Override
 	public void getGlobalVariableListInReg(CustomFile file) {
 
@@ -568,7 +565,7 @@ public class CouplingServiceImp implements CouplingService {
 		file.getCoupling().setGlobalVariableListInReg(globalVariableSetInReg);
 	}
 
-	// Senario 12
+
 	@Override
 	public void getGlobalVariableListInRec(CustomFile file) {
 
