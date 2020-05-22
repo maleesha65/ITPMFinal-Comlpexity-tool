@@ -66,11 +66,6 @@ public class Main extends javax.swing.JFrame {
         CouplingCheckBox = new javax.swing.JCheckBox();
         ControlStructureCheckBox = new javax.swing.JCheckBox();
         FileBrowseButton1 = new javax.swing.JButton();
-        svmCheckBox1 = new javax.swing.JCheckBox();
-        CouplingCheckBox1 = new javax.swing.JCheckBox();
-        InheritanceCheckBox1 = new javax.swing.JCheckBox();
-        ControlStructureCheckBox1 = new javax.swing.JCheckBox();
-        AnalyzeButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 800));
@@ -141,15 +136,15 @@ public class Main extends javax.swing.JFrame {
                 AnalyzeButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(AnalyzeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 140, 40));
+        getContentPane().add(AnalyzeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, 140, 40));
 
         svmCheckBox.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         svmCheckBox.setText("Size , Variables and Method");
-        getContentPane().add(svmCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, -1));
+        getContentPane().add(svmCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
 
         InheritanceCheckBox.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         InheritanceCheckBox.setText("Inheritance");
-        getContentPane().add(InheritanceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
+        getContentPane().add(InheritanceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, -1, -1));
 
         CouplingCheckBox.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         CouplingCheckBox.setText("Coupling");
@@ -158,11 +153,11 @@ public class Main extends javax.swing.JFrame {
                 CouplingCheckBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(CouplingCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, -1, -1));
+        getContentPane().add(CouplingCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, -1, -1));
 
         ControlStructureCheckBox.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         ControlStructureCheckBox.setText("Control Structures");
-        getContentPane().add(ControlStructureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, -1, -1));
+        getContentPane().add(ControlStructureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, -1, -1));
 
         FileBrowseButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         FileBrowseButton1.setText("CLEAR");
@@ -172,44 +167,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(FileBrowseButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, -1, 40));
-
-        svmCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        svmCheckBox1.setText("Size , Variables and Method");
-        getContentPane().add(svmCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, -1, -1));
-
-        CouplingCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        CouplingCheckBox1.setText("Coupling");
-        CouplingCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CouplingCheckBox1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CouplingCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, -1, -1));
-
-        InheritanceCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        InheritanceCheckBox1.setText("Inheritance");
-        getContentPane().add(InheritanceCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, -1, -1));
-
-        ControlStructureCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        ControlStructureCheckBox1.setText("Control Structures");
-        getContentPane().add(ControlStructureCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, -1, -1));
-
-        AnalyzeButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        AnalyzeButton1.setText("CALCULATE");
-        AnalyzeButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AnalyzeButton1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AnalyzeButton1MouseExited(evt);
-            }
-        });
-        AnalyzeButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AnalyzeButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(AnalyzeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 140, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -337,13 +294,17 @@ public class Main extends javax.swing.JFrame {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Calculating Coupling Complexity
+        //Passing File to the calculation for coupling 
         
         try{
             anzf.getCouplingComplexity(filepath);
         }catch(Exception e){
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
         }
+        
+        //Calculating Complexity of Coupling 
+        
+        anzf.getCouplingAnalyzer(ctrl.CouplingAnalyzer(ctrl.getStrArr()));
         
         try {
             //Calculating Method Complexity
@@ -362,22 +323,6 @@ public class Main extends javax.swing.JFrame {
     private void FileBrowseButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileBrowseButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FileBrowseButton1ActionPerformed
-
-    private void CouplingCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CouplingCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CouplingCheckBox1ActionPerformed
-
-    private void AnalyzeButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AnalyzeButton1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AnalyzeButton1MouseEntered
-
-    private void AnalyzeButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AnalyzeButton1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AnalyzeButton1MouseExited
-
-    private void AnalyzeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalyzeButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AnalyzeButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,17 +361,13 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AnalyzeButton;
-    private javax.swing.JButton AnalyzeButton1;
     private javax.swing.JTextArea CodeViewer;
     private javax.swing.JCheckBox ControlStructureCheckBox;
-    private javax.swing.JCheckBox ControlStructureCheckBox1;
     private javax.swing.JCheckBox CouplingCheckBox;
-    private javax.swing.JCheckBox CouplingCheckBox1;
     private javax.swing.JButton FileBrowseButton;
     private javax.swing.JButton FileBrowseButton1;
     private javax.swing.JLabel FileTypeLabel;
     private javax.swing.JCheckBox InheritanceCheckBox;
-    private javax.swing.JCheckBox InheritanceCheckBox1;
     private javax.swing.JLabel NumOfLines;
     private javax.swing.JTextField filNameField;
     private javax.swing.JLabel jLabel1;
@@ -436,6 +377,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField selectedPathField;
     private javax.swing.JCheckBox svmCheckBox;
-    private javax.swing.JCheckBox svmCheckBox1;
     // End of variables declaration//GEN-END:variables
 }
