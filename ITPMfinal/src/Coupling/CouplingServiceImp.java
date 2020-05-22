@@ -181,9 +181,9 @@ public class CouplingServiceImp implements CouplingService {
 
 	}
 
-
+//
 	@Override
-	public void getRecursiveMethods(CustomFile file) {
+	public int getRecursiveMethods(CustomFile file) {
 
 		ArrayList<Line> recursiveMethodSet = new ArrayList<Line>();
 
@@ -217,6 +217,8 @@ public class CouplingServiceImp implements CouplingService {
 
 		}
 		file.getCoupling().setRecursiveMethods(recursiveMethodSet);
+                
+                return recursiveMethodSet.size();
 	}
 
 	@Override

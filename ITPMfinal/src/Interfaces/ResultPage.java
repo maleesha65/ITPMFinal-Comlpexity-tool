@@ -190,6 +190,7 @@ public class ResultPage extends javax.swing.JFrame {
         NrmrgvdLabel.setText(Integer.toString(Nrmrgvd));
         
         Ccp = (Wr * Nr) + (Wmcms * Nmcms) + (Wmcmd * Nmcmd) + (Wmcrms * Nmcrms) + (Wmcrmd * Nmcrmd) + (Wrmcrms * Nrmcrms) + (Wrmcrmd *Nrmcrmd) + (Wrmcms * Nrmcms) + (Wrmcmd * Nrmcmd) + (Wmrgvs *Nmrgvs) + (Wmrgvd * Nmrgvd) + (Wrmrgvs * Nrmrgvs) + (Wrmrgvd * Nrmrgvd);
+        CouplingAnalyzer.setText(Integer.toString(Ccp));
         CcpLabel.setText(Integer.toString(Ccp));
     }
     
@@ -840,7 +841,7 @@ public class ResultPage extends javax.swing.JFrame {
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 1300, 370));
 
         jLabel39.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel39.setText("Coupling Complexity");
+        jLabel39.setText("Coupling Complexity:");
         getContentPane().add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 190, -1, -1));
 
         CouplingAnalyzer.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N

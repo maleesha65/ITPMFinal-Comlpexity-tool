@@ -17,8 +17,8 @@ public interface CouplingService {
 	public void getGlobalVariableSet(CustomFile file);
 	public void getGlobalVariableListInReg(CustomFile file);
 	public void getGlobalVariableListInRec(CustomFile file);
-	
-	public void getRecursiveMethods(CustomFile file);
+  
+	public int getRecursiveMethods(CustomFile file);
 	public void getRegularMethods(CustomFile file);
 	public void getRegInReg(CustomFile file);
 	public void getRecInReg(CustomFile file);

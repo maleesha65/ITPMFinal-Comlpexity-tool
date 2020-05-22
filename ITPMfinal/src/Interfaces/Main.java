@@ -301,11 +301,7 @@ public class Main extends javax.swing.JFrame {
         }catch(Exception e){
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
         }
-        
-        //Calculating Complexity of Coupling 
-        
-        anzf.getCouplingAnalyzer(ctrl.CouplingAnalyzer(ctrl.getStrArr()));
-        
+    
         try {
             //Calculating Method Complexity
             anzf.getMethodComplexity(filepath);
